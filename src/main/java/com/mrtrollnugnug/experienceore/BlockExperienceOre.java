@@ -24,8 +24,6 @@ public class BlockExperienceOre extends Block {
 		setRegistryName(MODID, "experience_ore");
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this).setRegistryName(getRegistryName()));
-		setHardness(4.0F);
-		setHarvestLevel("pickaxe", 2);
 	}
 
 	@Override
