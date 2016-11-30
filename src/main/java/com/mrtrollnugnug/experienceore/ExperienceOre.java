@@ -20,7 +20,7 @@ public class ExperienceOre {
 	public static ExperienceOre INSTANCE;
 
 	@SidedProxy(clientSide = "com.mrtrollnugnug.experienceore.ClientProxy", serverSide = "com.mrtrollnugnug.experienceore.ServerProxy")
-	public static CommonProxy proxy;
+	public static CommonProxy PROXY;
 
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {
@@ -30,6 +30,6 @@ public class ExperienceOre {
 
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
-		proxy.init();
+		PROXY.init();
 	}
 }

@@ -24,6 +24,7 @@ public class BlockExperienceOre extends Block {
 		setRegistryName(MODID, "experience_ore");
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this).setRegistryName(getRegistryName()));
+		ExperienceOre.PROXY.registerWithMapper(this);
 	}
 
 	@Override
