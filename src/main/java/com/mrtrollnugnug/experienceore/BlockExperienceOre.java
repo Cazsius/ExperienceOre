@@ -1,5 +1,9 @@
 package com.mrtrollnugnug.experienceore;
 
+import static com.mrtrollnugnug.experienceore.ExperienceOre.MODID;
+
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -9,10 +13,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import java.util.Random;
-
-import static com.mrtrollnugnug.experienceore.ExperienceOre.MODID;
 
 public class BlockExperienceOre extends Block {
 
@@ -24,6 +24,8 @@ public class BlockExperienceOre extends Block {
 		setRegistryName(MODID, "experience_ore");
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this).setRegistryName(getRegistryName()));
+		setHardness(4.0F);
+		setHarvestLevel("pickaxe", 2);
 	}
 
 	@Override
