@@ -11,12 +11,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockExperienceOre extends Block {
+public class BlockExperienceOre extends Block 
+{
 
-	public BlockExperienceOre() {
+	public BlockExperienceOre() 
+	{
 		super(Material.IRON);
 		setCreativeTab(CreativeTabs.MATERIALS);
 		setSoundType(SoundType.STONE);
@@ -29,9 +32,17 @@ public class BlockExperienceOre extends Block {
 		ExperienceOre.PROXY.registerWithMapper(this);
 		
 	}
+	
+    @Override
+    public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) 
+    {
+        return MathHelper. getRandomIntegerInRange(new Random(), ConfigManager.MinOreXP, ConfigManager.MaxOreXP);
+    }
 
+	
 	@Override
-	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
-		return (new Random().nextInt(3) * 3) * fortune;
-	}
+    public int quantityDropped(Random random)
+    {
+        return 0;
+    }
 }
