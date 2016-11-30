@@ -26,6 +26,7 @@ public class BlockExperienceOre extends Block {
 		setHarvestLevel("pickaxe", 2);
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this).setRegistryName(getRegistryName()));
+		ExperienceOre.PROXY.registerWithMapper(this);
 		
 	}
 
