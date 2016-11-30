@@ -5,17 +5,13 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class ExperienceOreBlock extends Block {
+public class BlockExperienceOre extends Block {
 
-	public ExperienceOreBlock(Material materialIn) {
-		super(materialIn);
+	public BlockExperienceOre() {
+		super(Material.IRON);
+		setCreativeTab(CreativeTabs.MATERIALS);
+		setSoundType(SoundType.STONE);
 		setUnlocalizedName("experience_ore");
 		setRegistryName("experience_ore");
-		setCreativeTab(CreativeTabs.MATERIALS);
-		setHardness(2.0F);
-		setSoundType(SoundType.STONE);
-		setHarvestLevel("pickaxe", 2);
-	}
-	
-
+	}	
 }
