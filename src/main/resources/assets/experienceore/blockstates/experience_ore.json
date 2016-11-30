@@ -1,5 +1,6 @@
 {
 	"variants": {
-		"normal": { "model": "experienceore:experience_ore" }
+		"normal": { "model": "experienceore:experience_ore" },
+		"inventory": { "model": "experienceore:experience_ore" }
 	}
 }
