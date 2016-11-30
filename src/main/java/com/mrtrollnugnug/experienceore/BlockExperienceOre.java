@@ -22,8 +22,11 @@ public class BlockExperienceOre extends Block {
 		setSoundType(SoundType.STONE);
 		setUnlocalizedName(MODID + ".experience_ore");
 		setRegistryName(MODID, "experience_ore");
+		setHardness(4.0F);
+		setHarvestLevel("pickaxe", 2);
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this).setRegistryName(getRegistryName()));
+		
 	}
 
 	@Override
