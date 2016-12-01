@@ -1,4 +1,4 @@
-package com.mrtrollnugnug.experienceore;
+package com.mrtrollnugnug.experienceore.proxy;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

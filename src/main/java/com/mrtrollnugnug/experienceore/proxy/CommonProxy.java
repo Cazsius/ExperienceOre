@@ -1,7 +1,6 @@
-package com.mrtrollnugnug.experienceore;
+package com.mrtrollnugnug.experienceore.proxy;
 
 import net.minecraft.block.Block;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 
@@ -11,7 +10,7 @@ public class CommonProxy {
 
 	public void init() 
 	{
-		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
+	
 	}
 	
 

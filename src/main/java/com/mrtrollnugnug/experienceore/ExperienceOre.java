@@ -1,5 +1,7 @@
 package com.mrtrollnugnug.experienceore;
 
+import com.mrtrollnugnug.experienceore.proxy.CommonProxy;
+
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -8,6 +10,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = ExperienceOre.MODID, version = ExperienceOre.VERSION)
 public class ExperienceOre
@@ -21,7 +24,7 @@ public class ExperienceOre
 	@Instance()
 	public static ExperienceOre INSTANCE;
 
-	@SidedProxy(clientSide = "com.mrtrollnugnug.experienceore.ClientProxy", serverSide = "com.mrtrollnugnug.experienceore.ServerProxy")
+	@SidedProxy(clientSide = "com.mrtrollnugnug.experienceore.proxy.ClientProxy", serverSide = "com.mrtrollnugnug.experienceore.proxy.ServerProxy")
 	public static CommonProxy PROXY;
 
 	@EventHandler
@@ -36,5 +39,6 @@ public class ExperienceOre
 	public static void init(FMLInitializationEvent event) 
 	{
 		PROXY.init();
+		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
 	}
 }

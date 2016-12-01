@@ -1,9 +1,10 @@
-package com.mrtrollnugnug.experienceore;
+package com.mrtrollnugnug.experienceore.proxy;
 
 import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Lists;
+import com.mrtrollnugnug.experienceore.ExperienceOre;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
