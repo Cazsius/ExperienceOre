@@ -57,10 +57,10 @@ public class ClientProxy extends CommonProxy {
 				stringbuilder.append(",");
 			}
 
-			IProperty<?> iProperty = (IProperty) entry.getKey();
+			IProperty<?> iProperty = (IProperty<?>) entry.getKey();
 			stringbuilder.append(iProperty.getName());
 			stringbuilder.append("=");
-			stringbuilder.append(getPropertyName(iProperty, (Comparable) entry.getValue()));
+			stringbuilder.append(getPropertyName(iProperty, (Comparable<?>) entry.getValue()));
 		}
 		if (stringbuilder.length() == 0) {
 			stringbuilder.append("inventory");

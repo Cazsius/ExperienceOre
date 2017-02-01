@@ -5,7 +5,8 @@ import net.minecraft.block.Block;
 public class CommonProxy {
 
 
-	public static void preInit() {
+	public static void preInit()
+	{
 	}
 
 	public void init() 
