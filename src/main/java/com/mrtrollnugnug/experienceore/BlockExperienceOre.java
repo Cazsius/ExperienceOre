@@ -32,6 +32,15 @@ public class BlockExperienceOre extends Block
 		
 	}
 
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return ExperienceBit.getByNameOrId("experience_bit");
+	}
+	
+	@Override
+	public int quantityDropped(IBlockState state, int fortune, Random random) {
+		return MathHelper.getInt(new Random(), ConfigManager.MinXPBit, ConfigManager.MaxXPBit);
+	}
 	
 	@Override
     public int quantityDropped(Random random)
