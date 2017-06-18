@@ -32,7 +32,6 @@ public class ExperienceOre
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) 
 	{
-		
 		ITEM_EXPERIENCE_BIT = new ExperienceBit();
 		BLOCK_EXPERIENCE_ORE = new BlockExperienceOre();
 		MinecraftForge.EVENT_BUS.register(new ConfigManager());

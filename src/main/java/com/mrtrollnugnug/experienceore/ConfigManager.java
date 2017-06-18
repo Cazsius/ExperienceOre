@@ -9,14 +9,11 @@ public class ConfigManager
 {
 	public static Configuration config;
 
-	public static int MinOreXP;
-	public static int MaxOreXP;
-	
-	public static int MaxSpawnHeight;
-	public static int MinSpawnHeight;
-	
+	public static int OreXP;
+	public static int MaxSpawnHeight, MinSpawnHeight;
 	public static int ChanceToSpawn;
 	public static int VeinSize;
+	public static int MinXPBit, MaxXPBit;
 	
 
 	public static void init(File configFile) 
@@ -30,14 +27,13 @@ public class ConfigManager
 
 	public static void load() {
 				
-		MinOreXP = config.getInt("MinOreXP", Configuration.CATEGORY_GENERAL, 8, 1, 99, "Controls minimum amount of XP Experience Ore will drop.");
-		MaxOreXP = config.getInt("MaxOreXP", Configuration.CATEGORY_GENERAL, 12, 1, 99, "Controls maximum amount of XP Experience Ore will drop.");
-		
+		OreXP = config.getInt("OreXP", Configuration.CATEGORY_GENERAL, 8, 1, 99, "Controls amount of XP Experience Bits will give.");
 		MaxSpawnHeight = config.getInt("MaxSpawnHeight", Configuration.CATEGORY_GENERAL, 64, 0, 256, "Controls maximum spawn height of Experience Ore.");
 		MinSpawnHeight = config.getInt("MinSpawnHeight", Configuration.CATEGORY_GENERAL, 0, 0, 256, "Controls minimum spawn height of Experience Ore.");
-		
 		ChanceToSpawn = config.getInt("ChanceToSpawn", Configuration.CATEGORY_GENERAL, 10, 1, 100, "Controls the chance to spawn in world generation.");
 		VeinSize = config.getInt("VeinSize", Configuration.CATEGORY_GENERAL, 5, 1, 10, "Controls the Vein size in world generation.");
+		MinXPBit = config.getInt("MinXPBit", Configuration.CATEGORY_GENERAL, 2, 1, 100, "Controls the minimum amount of XP Bits Experience Ore Drops");
+		MaxXPBit = config.getInt("MaxXPBit", Configuration.CATEGORY_GENERAL, 4, 1, 100, "Controls the maximium amount of XP Bits Experience Ore Drops");
 		
 		if (config.hasChanged()) 
 		{

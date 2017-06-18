@@ -1,9 +1,7 @@
 package com.mrtrollnugnug.experienceore.proxy;
 
-import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.Lists;
 import com.mrtrollnugnug.experienceore.ExperienceOre;
 
 import net.minecraft.block.Block;
@@ -13,6 +11,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -38,10 +37,11 @@ public class ClientProxy extends CommonProxy {
 				}
 			});
 
-			List<ItemStack> subBlocks = Lists.newArrayList();
+			NonNullList<ItemStack> subBlocks = NonNullList.create();
 			block.getSubBlocks(Item.getItemFromBlock(block), null, subBlocks);
 
 			for (ItemStack stack : subBlocks) {
+				@SuppressWarnings("deprecation")
 				IBlockState state = block.getStateFromMeta(stack.getMetadata());
 				ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), stack.getMetadata(),
 						new ModelResourceLocation(resourcePath, getPropertyString(state.getProperties())));
