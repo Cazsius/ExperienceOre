@@ -9,6 +9,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -36,7 +37,7 @@ public class ClientProxy extends CommonProxy {
 				}
 			});
 			NonNullList<ItemStack> subBlocks = NonNullList.create();
-			block.getSubBlocks(Item.getItemFromBlock(block), null, subBlocks);
+			block.getSubBlocks(CreativeTabs.MATERIALS, subBlocks);
 			
 			for (ItemStack stack : subBlocks) {
 				@SuppressWarnings("deprecation")
