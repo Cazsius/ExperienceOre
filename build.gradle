@@ -24,7 +24,7 @@ group= "com.mrtrollnugnug"
 archivesBaseName = "experienceore"
 
 minecraft {
-    version = "1.11.2-13.20.0.2228"
+    version = "1.11.2-13.20.1.2386"
     runDir = "run"
 
     mappings = "stable_32"

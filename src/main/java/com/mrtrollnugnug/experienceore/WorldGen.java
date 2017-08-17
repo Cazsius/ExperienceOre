@@ -35,7 +35,6 @@ public class WorldGen implements IWorldGenerator {
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 				IChunkProvider chunkProvider) {
-			// TODO Auto-generated method stub
 			  switch (world.provider.getDimension()) {
 			    case 0: //Overworld
 			        this.runGenerator(this.genExperienceOre, world, random, chunkX, chunkZ, ConfigManager.ChanceToSpawn, ConfigManager.MinSpawnHeight, ConfigManager.MaxSpawnHeight);

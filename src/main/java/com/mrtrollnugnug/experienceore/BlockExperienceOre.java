@@ -2,23 +2,19 @@ package com.mrtrollnugnug.experienceore;
 
 import static com.mrtrollnugnug.experienceore.ExperienceOre.MODID;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockExperienceOre extends Block 
-{
+public class BlockExperienceOre extends Block {
 
-	public BlockExperienceOre() 
-	{
+	public BlockExperienceOre() {
 		super(Material.IRON);
 		setCreativeTab(CreativeTabs.MATERIALS);
 		setSoundType(SoundType.STONE);
@@ -31,20 +27,9 @@ public class BlockExperienceOre extends Block
 		ExperienceOre.PROXY.registerWithMapper(this);
 		
 	}
-
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ExperienceBit.getByNameOrId("experience_bit");
-	}
 	
 	@Override
-	public int quantityDropped(IBlockState state, int fortune, Random random) {
-		return MathHelper.getInt(new Random(), ConfigManager.MinXPBit, ConfigManager.MaxXPBit);
+	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
+		return ConfigManager.OreXP;
 	}
-	
-	@Override
-    public int quantityDropped(Random random)
-    {
-        return 0;
-    }
 }

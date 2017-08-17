@@ -21,8 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ClientProxy extends CommonProxy {
 
 	@Override
-	public void init() {
-	}
+	public void init() {}
 
 	@Override
 	public void registerWithMapper(Block block) {
@@ -36,10 +35,9 @@ public class ClientProxy extends CommonProxy {
 					return new ModelResourceLocation(resourcePath, getPropertyString(state.getProperties()));
 				}
 			});
-
 			NonNullList<ItemStack> subBlocks = NonNullList.create();
 			block.getSubBlocks(Item.getItemFromBlock(block), null, subBlocks);
-
+			
 			for (ItemStack stack : subBlocks) {
 				@SuppressWarnings("deprecation")
 				IBlockState state = block.getStateFromMeta(stack.getMetadata());
