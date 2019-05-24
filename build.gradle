@@ -24,10 +24,10 @@ group= "com.mrtrollnugnug"
 archivesBaseName = "experienceore"
 
 minecraft {
-    version = "1.12.1-14.22.0.2456"
+    version = "1.12.2-14.23.5.2768"
     runDir = "run"
 
-    mappings = "snapshot_20170817"
+    mappings = "stable_39"
 }
 
 processResources

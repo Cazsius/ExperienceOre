@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerWithMapper(Block block) {
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient() && block != null) {
 			final String resourcePath = String.format("%s:%s", ExperienceOre.MODID,
-					block.getRegistryName().getResourcePath());
+					block.getRegistryName().getPath());
 
 			ModelLoader.setCustomStateMapper(block, new DefaultStateMapper() {
 				@Override

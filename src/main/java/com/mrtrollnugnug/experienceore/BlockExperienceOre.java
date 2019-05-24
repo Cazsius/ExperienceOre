@@ -17,8 +17,8 @@ public class BlockExperienceOre extends BlockOre {
 	public BlockExperienceOre() {
 		setCreativeTab(CreativeTabs.MATERIALS);
 		setSoundType(SoundType.STONE);
-		setUnlocalizedName(MODID + ".experience_ore");
-		setRegistryName(MODID, "experience_ore");
+		setRegistryName("experienceore:experience_ore");
+		setTranslationKey("experience_ore");
 		setHardness(4.0F);
 		setHarvestLevel("pickaxe", 2);
 		ExperienceOre.PROXY.registerWithMapper(this);
