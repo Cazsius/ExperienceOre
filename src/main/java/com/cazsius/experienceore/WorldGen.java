@@ -1,10 +1,10 @@
-package com.mrtrollnugnug.experienceore;
+package com.cazsius.experienceore;
 
 import java.util.Random;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkGenerator;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -16,7 +16,7 @@ public class WorldGen implements IWorldGenerator {
 		public WorldGen() {
 
 			// Vanilla default prob 10
-			this.genExperienceOre = new WorldGenMinable(ExperienceOre.BLOCK_EXPERIENCE_ORE.getDefaultState(), ConfigManager.VeinSize);
+			this.genExperienceOre = new WorldGenMinable(ExperienceOre.blockExperienceOre.getDefaultState(), ExperienceOre.Config.veinSize);
 		    
 		}
 	    private void runGenerator(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
@@ -35,10 +35,9 @@ public class WorldGen implements IWorldGenerator {
 		@Override
 		public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 				IChunkProvider chunkProvider) {
-			// TODO Auto-generated method stub
 			  switch (world.provider.getDimension()) {
 			    case 0: //Overworld
-			        this.runGenerator(this.genExperienceOre, world, random, chunkX, chunkZ, ConfigManager.ChanceToSpawn, ConfigManager.MinSpawnHeight, ConfigManager.MaxSpawnHeight);
+			        this.runGenerator(this.genExperienceOre, world, random, chunkX, chunkZ, ExperienceOre.Config.spawnChance, ExperienceOre.Config.minHeight, ExperienceOre.Config.maxHeight);
 			        break;
 				case -1: // Nether
 
