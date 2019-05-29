@@ -1,6 +1,4 @@
-package com.mrtrollnugnug.experienceore;
-
-import static com.mrtrollnugnug.experienceore.ExperienceOre.MODID;
+package com.cazsius.experienceore;
 
 import java.util.Random;
 
@@ -21,7 +19,6 @@ public class BlockExperienceOre extends BlockOre {
 		setTranslationKey("experience_ore");
 		setHardness(4.0F);
 		setHarvestLevel("pickaxe", 2);
-		ExperienceOre.PROXY.registerWithMapper(this);
 		
 	}
 	
@@ -32,6 +29,6 @@ public class BlockExperienceOre extends BlockOre {
 	
 	@Override
 	public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
-		return ConfigManager.OreXP;
+		return ExperienceOre.Config.OreXP;
 	}
 }
