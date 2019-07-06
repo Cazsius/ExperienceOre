@@ -1,13 +1,15 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"all": "experienceore:blocks/experience_ore"
-		},
-		"model": "cube_all",
-		"uvlock": true
-	},
-	"variants": {
-		"normal": [{}]
-	}
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "experienceore:blocks/experience_ore"
+    },
+    "model": "cube_all",
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {}
+    ]
+  }
 }

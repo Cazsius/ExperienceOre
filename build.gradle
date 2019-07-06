@@ -24,7 +24,7 @@ group= "com.cazsius.experienceore"
 archivesBaseName = "experienceore"
 
 minecraft {
-    version = "1.12.2-14.23.5.2768"
+    version = "1.12.2-14.23.5.2838"
     runDir = "run"
 
     mappings = "stable_39"
