@@ -1,0 +1,12 @@
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[28,)" #mandatory (28 is current forge version)
+[[mods]] #mandatory
+modId="experienceore" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="ExperienceOre" #mandatory
+logoFile="experienceore.png" #optional
+authors="Cazsius" #optional
+description='''A simple mod that adds ore that drops experience! '''
+
+

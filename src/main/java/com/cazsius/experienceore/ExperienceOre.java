@@ -1,83 +1,61 @@
 package com.cazsius.experienceore;
 
+import com.cazsius.experienceore.blocks.ExperienceOreBlock;
+import com.cazsius.experienceore.proxy.ClientProxy;
+import com.cazsius.experienceore.proxy.IProxy;
+import com.cazsius.experienceore.proxy.ServerProxy;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.ForgeConfig;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;
+import sun.security.krb5.Config;
 
-@Mod(modid = ExperienceOre.MODID, name = ExperienceOre.NAME, version = ExperienceOre.VERSION)
+@Mod("experienceore")
 public class ExperienceOre {
 
-	public static final String MODID = "experienceore";
-	public static final String NAME = "Experience Ore";
-	public static final String VERSION = "1.0.1";
-	public static Block blockExperienceOre;
+    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public final void onModelRegistry(ModelRegistryEvent event) {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(blockExperienceOre), 0, new ModelResourceLocation(blockExperienceOre.getRegistryName(), "normal"));
-	}
+    private static final Logger LOGGER = LogManager.getLogger();
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(this);
-		blockExperienceOre = new BlockExperienceOre();
-	}
+    public ExperienceOre() {
 
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		GameRegistry.registerWorldGenerator(new WorldGen(), 0);
-	}
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
-	@SubscribeEvent
-	public void onRegisterBlocks(RegistryEvent.Register<Block> event) {
-		event.getRegistry().register(blockExperienceOre);
-	}
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
 
-	@SubscribeEvent
-	public void onRegisterItems(RegistryEvent.Register<Item> event) {
-		event.getRegistry().register(new ItemBlock(blockExperienceOre).setRegistryName(blockExperienceOre.getRegistryName()));
-	}
 
-	@Config(modid = MODID, name = NAME)
-	public static class ModConfig {
-		@Config.Comment("How much XP is dropped when the ore is broken")
-		@Config.RangeInt(min = 1, max = 1000)
-		@Config.Name("Ore XP")
-		public static int OreXP = 10;
+        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigData.SERVER_SPEC);
+    }
 
-		@Config.RangeInt(min = 0, max = 256)
-		@Config.Name("Maximum Spawn Height")
-		@Config.Comment("The maximum height to spawn ore at.")
-		public static int maxHeight = 64;
+    private void setup(final FMLCommonSetupEvent event) {
+    }
 
-		@Config.RangeInt(min = 0, max = 256)
-		@Config.Name("Minimum Spawn Height")
-		@Config.Comment("The minimum height to spawn ore at.")
-		public static int minHeight = 0;
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class RegistryEvents {
+        @SubscribeEvent
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+            event.getRegistry().register(new ExperienceOreBlock());
+        }
 
-		@Config.RangeInt(min = 1, max = 100)
-		@Config.Name("Chance to Spawn")
-		@Config.Comment("Controls the chance to spawn in world generation.")
-		public static int spawnChance = 10;
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Block> event) {
+        }
+    }
 
-		@Config.RangeInt(min = 1, max = 10)
-		@Config.Name("Vein Size")
-		@Config.Comment("The maximum number of ores per vein")
-		public static int veinSize = 5;
-	}
+    public void modConfig(ModConfig.ModConfigEvent event)
+    {
+        ModConfig config = event.getConfig();
+        if (config.getSpec() == ConfigData.SERVER_SPEC)
+            ConfigData.refreshServer();
+    }
 }
