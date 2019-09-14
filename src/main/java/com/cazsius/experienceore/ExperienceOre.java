@@ -34,7 +34,7 @@ public class ExperienceOre {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
 
 
-        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigData.SERVER_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigData.COMMON_SPEC);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -55,7 +55,7 @@ public class ExperienceOre {
     public void modConfig(ModConfig.ModConfigEvent event)
     {
         ModConfig config = event.getConfig();
-        if (config.getSpec() == ConfigData.SERVER_SPEC)
-            ConfigData.refreshServer();
+        if (config.getSpec() == ConfigData.COMMON_SPEC)
+            ConfigData.refreshCommon();
     }
 }

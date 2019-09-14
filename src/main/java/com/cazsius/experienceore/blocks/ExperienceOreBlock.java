@@ -15,7 +15,7 @@ import sun.security.krb5.Config;
 
 public class ExperienceOreBlock extends Block {
 
-    int oreXpDrop = ConfigData.SERVER.oreXpDrop.get();
+    int oreXpDrop = ConfigData.COMMON.oreXpDrop.get();
 
     public ExperienceOreBlock() {
         super(Properties.create(Material.ROCK)
