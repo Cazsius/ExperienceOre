@@ -19,6 +19,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;
 import sun.security.krb5.Config;
 
+import java.io.File;
+
 @Mod("experienceore")
 public class ExperienceOre {
 
@@ -31,10 +33,8 @@ public class ExperienceOre {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
 
-
-        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigData.SERVER_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigData.COMMON_SPEC);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -52,10 +52,4 @@ public class ExperienceOre {
         }
     }
 
-    public void modConfig(ModConfig.ModConfigEvent event)
-    {
-        ModConfig config = event.getConfig();
-        if (config.getSpec() == ConfigData.SERVER_SPEC)
-            ConfigData.refreshServer();
-    }
 }

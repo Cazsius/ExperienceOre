@@ -3,7 +3,7 @@ modLoader="javafml" #mandatory
 loaderVersion="[28,)" #mandatory (28 is current forge version)
 [[mods]] #mandatory
 modId="experienceore" #mandatory
-version="${file.jarVersion}" #mandatory
+version="1.0.2" #mandatory
 displayName="ExperienceOre" #mandatory
 logoFile="experienceore.png" #optional
 authors="Cazsius" #optional
