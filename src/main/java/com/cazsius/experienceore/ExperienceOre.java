@@ -5,7 +5,6 @@ import com.cazsius.experienceore.proxy.ClientProxy;
 import com.cazsius.experienceore.proxy.IProxy;
 import com.cazsius.experienceore.proxy.ServerProxy;
 import net.minecraft.block.Block;
-import net.minecraftforge.common.ForgeConfig;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -16,8 +15,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.plugins.PluginConfiguration;
-import sun.security.krb5.Config;
 
 @Mod("experienceore")
 public class ExperienceOre {
