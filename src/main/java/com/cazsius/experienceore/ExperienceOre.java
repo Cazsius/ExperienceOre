@@ -64,8 +64,8 @@ public class ExperienceOre {
         @SubscribeEvent
         public static void onFeatureRegistryEvent(RegistryEvent.Register<Feature<?>> event) {
             ForgeRegistries.BIOMES.forEach(biome -> biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
-                    Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, Blocks.COAL_ORE.getDefaultState(),
-                            ConfigData.COMMON.maxVeinSize.get()), Placement.COUNT_RANGE, new CountRangeConfig(100,
+                    Biome.createDecoratedFeature(Feature.ORE, new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, ModBlocks.EXPERIENCE_ORE_BLOCK.getDefaultState(),
+                            ConfigData.COMMON.maxVeinSize.get()), Placement.COUNT_RANGE, new CountRangeConfig(ConfigData.COMMON.chanceToSpawn.get(),
                             ConfigData.COMMON.minSpawnHeight.get(), 0, ConfigData.COMMON.maxSpawnHeight.get()))));
 
         }

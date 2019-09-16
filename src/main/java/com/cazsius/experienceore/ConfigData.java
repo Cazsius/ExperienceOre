@@ -29,19 +29,19 @@ public class ConfigData {
             builder.push("general");
             oreXpDrop = builder
                     .comment("How much XP is dropped when the ore is broken")
-                    .defineInRange("oreXpDrop", 10, 1, 100);
+                    .defineInRange("oreXpDrop", 15, 1, 100);
             minSpawnHeight = builder
                     .comment("The minimum height to spawn ore at.")
                     .defineInRange("minSpawnHeight", 0, 0, 256);
             maxSpawnHeight = builder
                     .comment("The maximum height to spawn ore at.")
-                    .defineInRange("maxSpawnHeight", 64, 0, 256);
+                    .defineInRange("maxSpawnHeight", 72, 0, 256);
             chanceToSpawn = builder
                     .comment("Controls the chance to spawn in world generation.")
-                    .defineInRange("chanceToSpawn", 10, 1, 100);
+                    .defineInRange("chanceToSpawn", 12, 1, 100);
             maxVeinSize = builder
                     .comment("The maximum number of ores per vein.")
-                    .defineInRange("veinSize", 5, 1, 10);
+                    .defineInRange("veinSize", 6, 1, 10);
             builder.pop();
         }
     }
