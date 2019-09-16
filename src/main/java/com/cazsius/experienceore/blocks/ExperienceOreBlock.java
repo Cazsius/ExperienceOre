@@ -5,13 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.SilkTouchEnchantment;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
 public class ExperienceOreBlock extends Block {
-
-        int oreXpDrop = ConfigData.COMMON.oreXpDrop.get();
 
     public ExperienceOreBlock() {
         super(Properties.create(Material.ROCK)
@@ -25,6 +24,11 @@ public class ExperienceOreBlock extends Block {
 
     @Override
     public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch) {
-        return oreXpDrop;
+        if(silktouch == 0) {
+            return ConfigData.COMMON.oreXpDrop.get();
+        }
+        else {
+            return 0;
+        }
     }
 }

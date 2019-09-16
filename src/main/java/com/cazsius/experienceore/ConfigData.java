@@ -15,20 +15,15 @@ public class ConfigData {
         COMMON = specPair.getLeft();
     }
 
-    public static int oreXPDrop;
-
-    //TODO Use other 4 variables during world gen
-    public static int minSpawnHeight;
-    public static int maxSpawnHeight;
-    public static int chanceToSpawn;
-    public static int veinSize;
 
     public static class CommonConfig {
         public final ForgeConfigSpec.IntValue oreXpDrop;
+
+        //TODO Use other 4 values
         public final ForgeConfigSpec.IntValue minSpawnHeight;
         public final ForgeConfigSpec.IntValue maxSpawnHeight;
         public final ForgeConfigSpec.IntValue chanceToSpawn;
-        public final ForgeConfigSpec.IntValue veinSize;
+        public final ForgeConfigSpec.IntValue maxVeinSize;
 
         CommonConfig(ForgeConfigSpec.Builder builder) {
             builder.push("general");
@@ -44,21 +39,11 @@ public class ConfigData {
             chanceToSpawn = builder
                     .comment("Controls the chance to spawn in world generation.")
                     .defineInRange("chanceToSpawn", 10, 1, 100);
-            veinSize = builder
+            maxVeinSize = builder
                     .comment("The maximum number of ores per vein.")
                     .defineInRange("veinSize", 5, 1, 10);
             builder.pop();
         }
-    }
-
-    public static void refreshCommon()
-    {
-        oreXPDrop = COMMON.oreXpDrop.get();
-        minSpawnHeight = COMMON.minSpawnHeight.get();
-        maxSpawnHeight = COMMON.maxSpawnHeight.get();
-        chanceToSpawn = COMMON.chanceToSpawn.get();
-        veinSize = COMMON.veinSize.get();
-
     }
 
 }

@@ -1,10 +1,14 @@
 package com.cazsius.experienceore;
 
 import com.cazsius.experienceore.blocks.ExperienceOreBlock;
+import com.cazsius.experienceore.blocks.ModBlocks;
 import com.cazsius.experienceore.proxy.ClientProxy;
 import com.cazsius.experienceore.proxy.IProxy;
 import com.cazsius.experienceore.proxy.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -13,6 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ObjectHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +33,6 @@ public class ExperienceOre {
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::modConfig);
-
 
         modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigData.COMMON_SPEC);
     }
@@ -45,14 +48,8 @@ public class ExperienceOre {
         }
 
         @SubscribeEvent
-        public static void onItemsRegistry(final RegistryEvent.Register<Block> event) {
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
+            event.getRegistry().register(new BlockItem(ModBlocks.EXPERIENCE_ORE_BLOCK, new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)).setRegistryName("experienceore"));
         }
-    }
-
-    public void modConfig(ModConfig.ModConfigEvent event)
-    {
-        ModConfig config = event.getConfig();
-        if (config.getSpec() == ConfigData.COMMON_SPEC)
-            ConfigData.refreshCommon();
     }
 }
