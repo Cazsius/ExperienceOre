@@ -28,20 +28,20 @@ public class ConfigData {
         CommonConfig(ForgeConfigSpec.Builder builder) {
             builder.push("general");
             oreXpDrop = builder
-                    .comment("How much XP is dropped when the ore is broken")
+                    .comment("How much XP is dropped when the Experience Ore is broken")
                     .defineInRange("oreXpDrop", 15, 1, 100);
             minSpawnHeight = builder
-                    .comment("The minimum height to spawn ore at.")
+                    .comment("The minimum height to spawn Experience Ore at.")
                     .defineInRange("minSpawnHeight", 0, 0, 256);
             maxSpawnHeight = builder
-                    .comment("The maximum height to spawn ore at.")
+                    .comment("The maximum height to spawn Experience Ore at.")
                     .defineInRange("maxSpawnHeight", 72, 0, 256);
             chanceToSpawn = builder
-                    .comment("Controls the chance to spawn in world generation.")
+                    .comment("Controls the chance to spawn Experience Ore in world generation.")
                     .defineInRange("chanceToSpawn", 12, 1, 100);
             maxVeinSize = builder
-                    .comment("The maximum number of ores per vein.")
-                    .defineInRange("veinSize", 6, 1, 10);
+                    .comment("The maximum number of ores per vein. Please note, the average ore vein will be about half of this. EX: Vanilla Coal is 17.")
+                    .defineInRange("veinSize", 10, 1, 100);
             builder.pop();
         }
     }
