@@ -16,9 +16,8 @@ public class ExperienceOreBlock extends Block {
                 .sound(SoundType.METAL)
                 .hardnessAndResistance(2.0F)
                 .harvestTool(ToolType.PICKAXE)
-                .harvestLevel(1)
-        );
-        setRegistryName("experienceore");
+                .harvestLevel(1)  
+                .setRequiresTool());
     }
 
     @Override

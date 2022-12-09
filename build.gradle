@@ -1,36 +1,38 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
-group = 'com.cazsius.experienceore' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = '1.16.5-1.0'
+group = 'com.cazius.experienceore' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'experienceore'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
+
+
+
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'snapshot', version: '20191225-1.14.3'
+    mappings channel: 'snapshot', version: '20210309-1.16.5'
 
     runs {
         client {
             workingDirectory project.file('run')
 
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                experienceore {
                     source sourceSets.main
                 }
             }
@@ -39,7 +41,7 @@ minecraft {
         server {
             workingDirectory project.file('run')
 
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
 
@@ -53,11 +55,11 @@ minecraft {
         data {
             workingDirectory project.file('run')
 
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'experienceore', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 experienceore {
@@ -68,33 +70,37 @@ minecraft {
     }
 }
 
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.1-30.0.16'
+
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.0'
+
 }
 
+// Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
             "Specification-Title": "experienceore",
-            "Specification-Vendor": "experienceoreteam",
-            "Specification-Version": "1",
+            "Specification-Vendor": "experienceoresareus",
+            "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"experienceoreteam",
+            "Implementation-Vendor" :"experienceoresareus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
 
-def reobfFile = file("$buildDir/reobfJar/output.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
-}
+jar.finalizedBy('reobfJar') 
+
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifact reobfArtifact
+            artifact jar
         }
     }
     repositories {
