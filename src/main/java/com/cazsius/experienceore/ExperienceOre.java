@@ -21,7 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
-@Mod("experienceore")
+@Mod(ExperienceOre.MOD_ID)
 public class ExperienceOre {
 
     public static final String MOD_ID = "experienceore";

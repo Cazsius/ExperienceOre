@@ -1,4 +1,4 @@
-package com.technovision.tutorial.init;
+package com.cazsius.experienceore;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
