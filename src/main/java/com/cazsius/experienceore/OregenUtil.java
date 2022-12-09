@@ -1,4 +1,4 @@
-package com.cazus.expdropped;
+package com.cazus.experienceore;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.world.gen.GenerationStage;

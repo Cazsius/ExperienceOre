@@ -13,7 +13,7 @@ public class ConfigData {
 	
 	
 	static {
-		BUILDER.push("MAIN");
+		BUILDER.push("general");
 		
 		oreXpDrop = BUILDER.comment("4").define("oreXpDrop", 3,1,100);
 
