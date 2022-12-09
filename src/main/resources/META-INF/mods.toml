@@ -1,12 +1,23 @@
-modLoader="javafml" #mandatory
-# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[30,)" #mandatory (30 is current forge version)
-[[mods]] #mandatory
-modId="experienceore" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="ExperienceOre" #mandatory
-logoFile="experienceore.png" #optional
-authors="Cazsius" #optional
-description='''A simple mod that adds ore that drops experience! '''
-
-
+modLoader="javafml"
+loaderVersion="[36,)"
+license="LGPL"
+issueTrackerURL="https://github.com/Cazsius/ExperienceOre/issues"
+[[mods]] 
+modId="experienceore" 
+version="${file.jarVersion}" 
+displayName="ExperienceOre"
+description='''
+A simple mod that adds ore that drops experience!
+'''
+[[dependencies.experienceore]] 
+    modId="forge" 
+    mandatory=true 
+    versionRange="[36,)" 
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.experienceore]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
