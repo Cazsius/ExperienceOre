@@ -28,11 +28,13 @@ public class ExperienceOre {
 
     public ExperienceOre() {
 
-        ModLoadingContext modLoadingContext = ModLoadingContext.get();
+        ModBlocks.BLOCKS(bus);
+        ModItems.ITEMS(bus);
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+       IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigData.COMMON_SPEC);
+
+        bus.registerConfig(ModConfig.Type.COMMON, ConfigData.COMMON_SPEC);
     }
 
 
