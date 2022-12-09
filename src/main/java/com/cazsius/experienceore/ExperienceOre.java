@@ -24,6 +24,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod("experienceore")
 public class ExperienceOre {
 
+    public static final String MOD_ID = "experienceore";
+
     public ExperienceOre() {
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();

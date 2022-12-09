@@ -6,6 +6,8 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import com.cazsius.experienceore.blocks.ModBlocks;
+import com.cazsius.experienceore.ExperienceOre;
+import com.cazsius.experienceore.blocks.ModBlocks;
 
 public class ModItems {
 
@@ -13,6 +15,6 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.EXP_ORE.get(), new Item.Properties()));
 
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tutorial.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ExperienceOre.MOD_ID);
 
 }
